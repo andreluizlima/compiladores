@@ -56,5 +56,9 @@ PRINT   : 'print' ;
 READ    : 'read' ;
 NUM     : [0-9]+ ;
 VAR     : [a-zA-Z][a-zA-Z0-9_]*;
+<<<<<<< HEAD
 STR     : '"'[a-zA-Z0-9 ]+'"';
+=======
+STR     : '"'.*'"';
+>>>>>>> f158291cf2ee9eb2d7ce921e5d61f27497a5e19b
 WS      : [\n\r \t]+ -> skip;
