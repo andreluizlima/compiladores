@@ -22,25 +22,25 @@ print   : PRINT STR
 read    : READ VAR
         ;
 
-attr    : VAR '=' expr
+attr    : a=VAR '=' e=expr          {SymbolsTable.getInstance().addSymbol($a.text, $e.value);}
         ;
 
 expr    returns[Double value]
-        : expr1 '+' expr
-        | expr1 '-' expr
-        | expr1
+        : a=expr1 '+' b=expr        {$value = $a.value + $b.value;}
+        | a=expr1 '-' b=expr        {$value = $a.value - $b.value;}
+        | a=expr1                 {$value = $a.value;}
         ;
 
 expr1   returns[Double value]
-        : expr2 '*' expr
-        | expr2 '/' expr
-        | expr2
+        : a=expr2 '*' b=expr        {$value = $a.value * $b.value;}
+        | a=expr2 '/' b=expr        {$value = $a.value / $b.value;}
+        | a=expr2                 {$value = $a.value;}
         ;
 
 expr2   returns[Double value]
-        : '(' expr ')'
-        | NUM
-        | VAR
+        : '(' a=expr ')'          {$value = $a.value;}
+        | n=NUM                   {$value = Double.parseDouble($n.text);}
+        | v=VAR                   {$value = SymbolsTable.getInstance().getSymbol($v.text);}
         ;
 
 //TOKENS
