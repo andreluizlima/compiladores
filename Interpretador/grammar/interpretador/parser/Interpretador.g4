@@ -3,6 +3,9 @@
  ******************************************************/
 grammar Interpretador;
 
+@header{
+    package interpretador.parser;
+}
 program : (stmt EOL)+
         ;
 
@@ -51,5 +54,4 @@ READ    : 'read' ;
 NUM     : [0-9]+ ;
 VAR     : [a-zA-Z][a-zA-Z0-9_]*;
 STR     : '"'.*'"';
-NEWLINE : '\r'? '\n';
-WS      : [ \t]+ -> skip;
+WS      : [\n\r \t]+ -> skip;
