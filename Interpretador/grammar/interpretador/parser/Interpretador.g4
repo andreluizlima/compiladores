@@ -14,7 +14,42 @@ statement : print
           ;
 
 print : PRINT STR
-      | PRINT expr
-      
+      | PRINT expr      
       ;
-EOL: ';';
+
+read : READ VAR
+     ;
+
+attr : VAR '=' expr
+     ;
+
+expr : expr1 '+' expr
+     | expr1 '-' expr
+     | expr1
+     ;
+
+expr1 : expr2 '*' expr
+      | expr2 '/' expr
+      | expr2
+      ;
+
+expr2 : '(' expr ')'
+      | NUM
+      | VAR
+      ;
+
+//TOKENS
+
+PLUS        : '+' ;
+MINUS       : '-' ;
+MULT        : '*' ;
+DIV         : '/' ;
+OPEN        : '(' ;
+CLOSE       : ')' ;
+EQ          : '=' ;
+EOL         : ';' ;
+PRINT       : 'print' ;
+READ        : 'read' ;
+NUM         : [0-9]+ ;
+VAR         : [a-zA-Z][a-zA-Z0-9_]{0, 99} ; 
+STR         :  ;
