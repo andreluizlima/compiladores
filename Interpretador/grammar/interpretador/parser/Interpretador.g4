@@ -25,17 +25,20 @@ read    : READ VAR
 attr    : VAR '=' expr
         ;
 
-expr    : expr1 '+' expr
+expr    returns[Double value]
+        : expr1 '+' expr
         | expr1 '-' expr
         | expr1
         ;
 
-expr1   : expr2 '*' expr
+expr1   returns[Double value]
+        : expr2 '*' expr
         | expr2 '/' expr
         | expr2
         ;
 
-expr2   : '(' expr ')'
+expr2   returns[Double value]
+        : '(' expr ')'
         | NUM
         | VAR
         ;
