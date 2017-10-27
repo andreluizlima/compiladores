@@ -5,6 +5,7 @@ grammar Interpretador;
 
 @header{
     package interpretador.parser;
+    import java.util.*;
 }
 program : (stmt EOL)+
         ;
@@ -15,26 +16,30 @@ stmt    : print
         | expr
         ;
 
-print   : PRINT STR
-        | PRINT expr
+print   : PRINT STR                 {System.out.println($STR.text.replace("\"",""));}
+        | PRINT expr                {System.out.println($expr.value);}
         ;
 
-read    : READ VAR
+read    : READ VAR                  {
+            Scanner s = new Scanner(System.in);
+            Double d = s.nextDouble();
+            SymbolsTable.getInstance().addSymbol($VAR.text, d);
+        }
         ;
 
-attr    : a=VAR '=' e=expr          {SymbolsTable.getInstance().addSymbol($a.text, $e.value);}
+attr    : a=VAR EQ e=expr          {SymbolsTable.getInstance().addSymbol($a.text, $e.value);}
         ;
 
 expr    returns[Double value]
         : a=expr1 '+' b=expr        {$value = $a.value + $b.value;}
         | a=expr1 '-' b=expr        {$value = $a.value - $b.value;}
-        | a=expr1                 {$value = $a.value;}
+        | a=expr1                   {$value = $a.value;}
         ;
 
 expr1   returns[Double value]
         : a=expr2 '*' b=expr        {$value = $a.value * $b.value;}
         | a=expr2 '/' b=expr        {$value = $a.value / $b.value;}
-        | a=expr2                 {$value = $a.value;}
+        | a=expr2                   {$value = $a.value;}
         ;
 
 expr2   returns[Double value]
@@ -56,9 +61,5 @@ PRINT   : 'print' ;
 READ    : 'read' ;
 NUM     : [0-9]+ ;
 VAR     : [a-zA-Z][a-zA-Z0-9_]*;
-<<<<<<< HEAD
-STR     : '"'[a-zA-Z0-9 ]+'"';
-=======
-STR     : '"'.*'"';
->>>>>>> f158291cf2ee9eb2d7ce921e5d61f27497a5e19b
+STR     : '"'[a-zA-Z0-9\t ]*'"';
 WS      : [\n\r \t]+ -> skip;
