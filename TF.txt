@@ -1,0 +1,18 @@
+TF 29-11 | 01-12
+
+-> código
+-> apresentação
+-> relatório
+
+--> funcionalidades(miniPascal)
+	*Interpretador
+	*Tradutor (C/C++)
+	   -Sempre correto
+
+*Entrada e saída
+*Expressões (Num, Bool)
+*Variáveis (String, Int, Float, Boolean, Array)
+*Controle de fluxo (If, If Else, Switch)
+*Laços de repetição (While, For)
+*Funções (Com retorno, Sem retorno)
+
