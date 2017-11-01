@@ -16,3 +16,6 @@ TF 29-11 | 01-12
 *Laços de repetição (While, For)
 *Funções (Com retorno, Sem retorno)
 
++ Análise semantica
+	-Verificação de declaração e de tipos
+	
