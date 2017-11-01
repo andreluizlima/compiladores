@@ -19,3 +19,21 @@ TF 29-11 | 01-12
 + Análise semantica
 	-Verificação de declaração e de tipos
 	
+
+____________________________________________________________
+Linha de comandos
+
+Interpretador
+
+$ TFi code.pas
+
+	code.pas -> |	  TF	   |  ___\   OUTPUT
+	input ----> |Interpretador |     /	
+
+Tradutor
+
+$ TFc code.pas -o code
+
+	code.pas -> |TF Comp| -> code
+		    |pas-> c|
+		    |c-> bin|
