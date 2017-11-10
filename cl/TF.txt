@@ -37,3 +37,8 @@ $ TFc code.pas -o code
 	code.pas -> |TF Comp| -> code
 		    |pas-> c|
 		    |c-> bin|
+
+
+http://www.antlr3.org/grammar/list.html
+https://stackoverflow.com/questions/1844562/how-to-match-a-string-but-case-insensitively
+https://www.cs.helsinki.fi/u/vihavain/k06/okk/items/minipascalsyntax.html
